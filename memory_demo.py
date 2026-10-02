@@ -1,7 +1,6 @@
 # memory_demo.py
-# Block 10 — Version 1: memory with the history typed by hand
-# (shows the IDEA: the model only "remembers" because WE re-send past messages).
-# Run:  python memory_demo.py
+# Optional standalone example: manually supplied chat history with LangChain.
+# Run: python memory_demo.py
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
@@ -12,13 +11,13 @@ model = ChatGroq(model="openai/gpt-oss-20b")
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a friendly tutor."),
-    MessagesPlaceholder("history"),     # past turns slot in here
+    MessagesPlaceholder("history"),
     ("human", "{question}"),
 ])
 chain = prompt | model
 
-# we hardcode the history here just to demonstrate
+# Sample conversation history supplied to the model.
 history = [HumanMessage("My name is Aarav."), AIMessage("Hi Aarav!")]
 
 answer = chain.invoke({"history": history, "question": "What's my name?"})
-print(answer.content)   # -> "Your name is Aarav."  (it "remembered" because we re-sent history)
+print(answer.content)

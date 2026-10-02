@@ -1,7 +1,6 @@
 # memory_chat.py
-# Block 10 — Version 2: memory that builds ITSELF (nothing hardcoded).
-# A real chat loop: after every turn we append the new question + answer.
-# Run:  python memory_chat.py   (type 'quit' to stop)
+# Optional standalone example: a LangChain chat loop with in-memory history.
+# Run: python memory_chat.py (type 'quit' to stop)
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
@@ -17,18 +16,18 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 chain = prompt | model
 
-history = []                                   # ① starts EMPTY — nothing hardcoded
+history = []
 
 print("Chat with the bot (type 'quit' to exit).")
-while True:                                     # ② one loop = one chat turn
+while True:
     question = input("You: ")
     if question.strip().lower() in {"quit", "exit"}:
         break
 
     answer = chain.invoke(
-        {"history": history, "question": question}).content   # ③ send history so far
+        {"history": history, "question": question}).content
     print("Bot:", answer)
 
-    history.append(HumanMessage(question))      # ④ remember what you said...
-    history.append(AIMessage(answer))           # ⑤ ...and what it replied
+    history.append(HumanMessage(question))
+    history.append(AIMessage(answer))
     print(f"   (history now has {len(history)} messages)")

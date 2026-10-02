@@ -1,6 +1,5 @@
-# scraper.py  — reused from Class 1
-# Turns a URL into the page's readable text. Plain web-scraping, no AI.
-# pip install requests beautifulsoup4
+# Optional utility for fetching readable text from a website.
+# Used by the standalone website summarizer example, not the shopping app.
 import requests
 from bs4 import BeautifulSoup
 

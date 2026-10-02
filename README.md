@@ -1,14 +1,12 @@
 # Smart Shopping Agent
 
-A small Python shopping assistant built with Gradio and Groq. It can look up sample product prices using a model-selected tool call. The repository also includes standalone LangChain memory and website-summarization examples from an AI engineering class.
+A small Python shopping assistant built with Gradio and Groq. It looks up sample product prices using a model-selected tool call. The repository also contains independent LangChain learning examples; they are not used by the shopping app.
 
 ## Features
 
 - Gradio chat interface with an optional temporary public share link.
 - Groq chat completions using `openai/gpt-oss-20b`.
 - A sample in-memory product catalog and price lookup tool.
-- Separate LangChain examples for chat memory and website summarization.
-- A simple website text scraper built with Requests and Beautiful Soup.
 
 ## Project Structure
 
@@ -16,12 +14,17 @@ A small Python shopping assistant built with Gradio and Groq. It can look up sam
 | --- | --- |
 | `app.py` | Starts the Gradio chat interface. |
 | `agent.py` | Calls Groq and provides the product-price tool. |
-| `memory_demo.py` | Demonstrates manually supplied chat history. |
-| `memory_chat.py` | Demonstrates a conversational loop with in-memory history. |
-| `summarizer_langchain.py` | Scrapes and summarizes a website with LangChain. |
-| `scraper.py` | Fetches and extracts readable website text. |
 | `requirements.txt` | Python dependencies. |
 | `.env.example` | Safe environment-variable template. |
+
+The following standalone examples are optional and are not imported by `app.py`:
+
+| File | Purpose |
+| --- | --- |
+| `memory_demo.py` | Demonstrates manually supplied chat history with LangChain. |
+| `memory_chat.py` | Demonstrates a chat loop with in-memory history. |
+| `summarizer_langchain.py` | Scrapes and summarizes a website with LangChain. |
+| `scraper.py` | Fetches and extracts readable website text for the summarizer. |
 
 ## Prerequisites
 
@@ -81,7 +84,7 @@ python app.py
 
 Open the local URL printed in the terminal. With `GRADIO_SHARE=true`, Gradio also attempts to print a temporary public URL. Share-link creation can fail when Gradio's sharing service is unavailable or a network, proxy, VPN, or firewall blocks its tunnel. Set `GRADIO_SHARE=false` to disable that attempt.
 
-Other examples can be run independently:
+Optional examples can be run independently:
 
 ```powershell
 python agent.py

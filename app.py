@@ -1,6 +1,6 @@
 # app.py
-# Block 12 — the PROJECT: give your agent a chat UI with Gradio.
-# Run:  python app.py     then open the local link it prints.
+# Gradio chat interface for the shopping assistant.
+# Run: python app.py
 import os
 
 import gradio as gr
@@ -12,8 +12,6 @@ share_enabled = os.getenv("GRADIO_SHARE", "true").strip().lower() == "true"
 
 
 def chat(message, history):
-    # Gradio fills in `message` (newest) and `history` (past turns) for you.
-    # Homework hint: pass `history` into your agent to give it memory!
     return agent(message)
 
 
