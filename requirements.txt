@@ -1,0 +1,7 @@
+groq
+langchain
+langchain-groq
+gradio
+requests
+beautifulsoup4
+python-dotenv
